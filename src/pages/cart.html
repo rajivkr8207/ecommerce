@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+    <link rel="stylesheet" href="../scss/base.css">
+    <link rel="stylesheet" href="../scss/cart.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  </head>
+  <body>
+      <div id="navbar-container"></div>
+ <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">
+                <i class="fas fa-shopping-cart"></i> Shopping Cart
+            </h1>
+            <a href="/" class="continue-shopping">
+                <i class="fas fa-arrow-left"></i> Continue Shopping
+            </a>
+        </div>
+
+        <div class="cart-layout">
+            <div class="cart-items">
+                <!-- Cart Item 1 -->
+                <div class="cart-item">
+                    <img
+                        src="https://picsum.photos/200/200?random=20"
+                        alt="Dumbbell Set"
+                        class="item-image"
+                    />
+                    <div class="item-details">
+                        <h3 class="item-name">Dumbbell Set</h3>
+                        <span class="item-category">Fitness</span>
+                        <div class="item-price">₹1,499</div>
+                        <div class="item-actions">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <button class="remove-btn">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item-total">₹1,499</div>
+                </div>
+
+            </div>
+
+            <div class="order-summary">
+                <h2 class="summary-title">Order Summary</h2>
+
+                <div class="summary-row">
+                    <span class="summary-label">Subtotal (3 items)</span>
+                    <span class="summary-value">₹5,596</span>
+                </div>
+
+                <div class="summary-row">
+                    <span class="summary-label">Shipping</span>
+                    <span class="summary-value">₹200</span>
+                </div>
+
+                <div class="summary-row">
+                    <span class="summary-label">Tax</span>
+                    <span class="summary-value">₹392</span>
+                </div>
+
+                <div class="discount-row">
+                    <span class="summary-label">Discount</span>
+                    <span class="summary-value">-₹500</span>
+                </div>
+
+                <div class="total-row">
+                    <span>Total</span>
+                    <span>₹5,688</span>
+                </div>
+
+                <!-- <div class="promo-code">
+                    <div class="promo-input">
+                        <input type="text" placeholder="Promo code" />
+                        <button class="apply-btn">Apply</button>
+                    </div>
+                </div> -->
+
+                <button class="checkout-btn">
+                    <i class="fas fa-lock"></i> Proceed to Checkout
+                </button>
+
+                <div class="secure-checkout">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure checkout</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="recently-viewed">
+            <h2 class="section-title">Recently Viewed</h2>
+            <div class="products-grid2">
+                <div class="product-card">
+                    <img
+                        src="https://picsum.photos/200/200?random=23"
+                        alt="Treadmill"
+                        class="product-image"
+                    />
+                    <div class="product-info">
+                        <h3 class="product-name">Foldable Treadmill</h3>
+                        <div class="product-price">₹24,999</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+    <!-- <script src="../js/index.js"></script> -->
+  </body>
+</html>

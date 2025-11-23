@@ -3,9 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "source": "src/index.html",
+  "type": "module",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "dev": "parcel src/pages/*html",
+    "build": "parcel build src/pages/*.html"
   },
   "dependencies": {},
   "devDependencies": {

@@ -1,0 +1,415 @@
+// Container and layout
+// Variables
+$bg-dark: #1a1a1a;
+$bg-darker: #0d0d0d;
+$accent: #6366f1;
+$accent-hover: #4f46e5;
+$text-light: #f8fafc;
+$text-gray: #94a3b8;
+$card-bg: #2d2d2d;
+$border-color: #404040;
+$success: #10b981;
+$danger: #ef4444;
+$transition: all 0.3s ease;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $border-color;
+
+    .page-title {
+      font-size: 2.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      i {
+        color: $accent;
+      }
+    }
+
+    .continue-shopping {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: $text-gray;
+      text-decoration: none;
+      transition: $transition;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+  }
+
+  .cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+  }
+
+  // Cart Items
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .cart-item {
+      background: $card-bg;
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: relative;
+
+      &:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .item-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .item-details {
+        flex: 1;
+
+        .item-name {
+          font-size: 1.3rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .item-category {
+          display: inline-block;
+          background: $accent;
+          color: white;
+          padding: 0.2rem 0.7rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          margin-bottom: 0.8rem;
+        }
+
+        .item-price {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: $text-light;
+          margin-bottom: 1rem;
+        }
+
+        .item-actions {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+
+            .quantity-btn {
+              background: $bg-darker;
+              border: none;
+              color: $text-light;
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              transition: $transition;
+
+              &:hover {
+                background: $accent;
+              }
+            }
+
+            .quantity {
+              font-size: 1.1rem;
+              font-weight: bold;
+              min-width: 30px;
+              text-align: center;
+            }
+          }
+
+          .remove-btn {
+            background: transparent;
+            border: 1px solid $danger;
+            color: $danger;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: $transition;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            &:hover {
+              background: $danger;
+              color: white;
+            }
+          }
+        }
+      }
+
+      .item-total {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $accent;
+        align-self: center;
+        margin-left: auto;
+      }
+    }
+  }
+
+  // Order Summary
+  .order-summary {
+    background: $card-bg;
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: fit-content;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 2rem;
+
+    .summary-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $border-color;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      .summary-label {
+        color: $text-gray;
+      }
+
+      .summary-value {
+        font-weight: 500;
+      }
+    }
+
+    .discount-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      color: $success;
+
+      .summary-label {
+        color: $success;
+      }
+
+      .summary-value {
+        font-weight: 500;
+      }
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 1.5rem 0;
+      padding-top: 1rem;
+      border-top: 1px solid $border-color;
+    }
+
+    .promo-code {
+      margin: 1.5rem 0;
+
+      .promo-input {
+        display: flex;
+        gap: 0.5rem;
+
+        input {
+          flex: 1;
+          background: $bg-darker;
+          border: 1px solid $border-color;
+          border-radius: 6px;
+          padding: 0.7rem 1rem;
+          color: $text-light;
+          outline: none;
+
+          &:focus {
+            border-color: $accent;
+          }
+        }
+
+        .apply-btn {
+          background: $accent;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          padding: 0 1.2rem;
+          cursor: pointer;
+          transition: $transition;
+
+          &:hover {
+            background: $accent-hover;
+          }
+        }
+      }
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: $accent;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: $transition;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+
+      &:hover {
+        background: $accent-hover;
+        transform: translateY(-2px);
+      }
+    }
+
+    .secure-checkout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      color: $text-gray;
+      font-size: 0.9rem;
+    }
+  }
+
+  // Recently viewed
+  .recently-viewed {
+    margin-top: 3rem;
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid $border-color;
+    }
+
+    .products-grid2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+
+      .product-card {
+        background: $card-bg;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: $transition;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .product-image {
+          width: 100%;
+          height: 140px;
+          object-fit: cover;
+        }
+
+        .product-info {
+          padding: 1rem;
+
+          .product-name {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .product-price {
+            font-weight: bold;
+            color: $accent;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 968px) {
+  .container {
+    .cart-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .order-summary {
+      position: static;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+
+    .cart-items {
+      .cart-item {
+        flex-direction: column;
+        text-align: center;
+
+        .item-image {
+          width: 100%;
+          height: 200px;
+        }
+
+        .item-details {
+          .item-actions {
+            justify-content: center;
+          }
+        }
+
+        .item-total {
+          margin-left: 0;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    .recently-viewed {
+      .products-grid2 {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    .page-header {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .recently-viewed {
+      .products-grid2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
