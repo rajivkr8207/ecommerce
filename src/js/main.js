@@ -42,3 +42,16 @@ document.querySelectorAll('.nav-link').forEach(link => {
         hamburger.innerHTML = '<i class="fas fa-bars"></i>';
     });
 });
+
+
+const cart_count = document.querySelector('.cart-count')
+var cart = JSON.parse(localStorage.getItem('cartshop')) || []
+
+
+
+function rendercart() {
+    if(cart.length>0){
+        cart_count.innerHTML =  cart.length
+    }
+}
+rendercart()

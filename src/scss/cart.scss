@@ -62,6 +62,11 @@ $transition: all 0.3s ease;
     flex-direction: column;
     gap: 1.5rem;
 
+    h1{
+      text-align: center;
+      font-size: 2rem;
+    }
+
     .cart-item {
       background: $card-bg;
       border-radius: 12px;
@@ -182,6 +187,7 @@ $transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     position: sticky;
     top: 2rem;
+    display: none;
 
     .summary-title {
       font-size: 1.5rem;

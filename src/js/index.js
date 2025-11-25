@@ -165,7 +165,7 @@ const Allproducts = [
 
 const allproducts = document.querySelector('.products-grid')
 
-let cluster = ''
+let rencluster = ''
 let retproducts
 
 const filterbtn = document.querySelector('.filter-buttons')
@@ -174,11 +174,9 @@ const allbtn = document.querySelector('.allporductbtn')
 
 const search_product = document.querySelector('#search_product')
 const active_search = document.querySelector('.active_search')
-
 var cart = JSON.parse(localStorage.getItem('cartshop')) || []
 
 search_product.addEventListener('focus', function () {
-
     let searching = search_product.value.toLowerCase()
     if (search_product.value.trim() != '') {
         retproducts = Allproducts.filter((e) => {
@@ -226,9 +224,9 @@ function Productfilter(query) {
 
 
 function renderdata(product) {
-    cluster = ''
+    rencluster = ''
     product?.forEach(function (elem, index) {
-        cluster += `
+        rencluster += `
     <div key='${index}' class="product-card">
         <img src="${elem.img}" class="card-image">
         <div class="card-content">
@@ -243,8 +241,9 @@ function renderdata(product) {
       </div>`
     })
 
-    allproducts.innerHTML = cluster
+    allproducts.innerHTML = rencluster
 }
+
 renderdata(Allproducts);
 
 
@@ -253,7 +252,6 @@ const productcard = document.querySelector('.products-grid')
 
 productcard.addEventListener('click', function (e) {
     if (e.target.classList.contains('add')) {
-        console.log(e.target);
         let productindex = e.target.dataset.index
         let filtercart = cart.some(function (elm) {
             return elm.id == productindex
@@ -262,8 +260,8 @@ productcard.addEventListener('click', function (e) {
             localStorage.removeItem('cartshop')
             cart.push(Allproducts[productindex])
             localStorage.setItem('cartshop', JSON.stringify(cart))
+            rendercart()
         }
-
     }
 })
 
@@ -284,3 +282,25 @@ filterbtn.addEventListener('click', function (e) {
 })
 
 
+
+
+//removeidtem
+function removeitemfromcart(id) {
+    console.log(id);
+}
+
+
+
+var cart = JSON.parse(localStorage.getItem('cartshop')) || []
+
+
+
+function rendercart() {
+    if(cart.length>0){
+        cart_count.innerHTML =  cart.length
+    }else{
+        cart_count.innerHTML =  0
+
+    }
+}
+rendercart()
