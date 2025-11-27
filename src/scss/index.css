@@ -1,15 +1,18 @@
 
 
-/* .flashmsg{
+.flashmsg{
   color: white;
-  padding: 1rem 2rem;
-  background-color: rgb(98, 201, 158);
-  position: absolute;
-  top: 10%;
-  
+  padding: .5rem 2rem;
+  background-color: var(--accent);
+  /* border: 2px solid  var(--accent); */
+  font-weight: 600;
+  position: fixed;
+  top: 3%;
   left: 45%;
+  z-index: 10;
+  display: none;
   border-radius: 1rem;
-} */
+}
 
 
 
@@ -40,6 +43,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
+  /* z-index: 0; */
 }
 .filter-section .filter-buttons {
   display: flex;

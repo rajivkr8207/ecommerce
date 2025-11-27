@@ -249,7 +249,8 @@ renderdata(Allproducts);
 
 
 const productcard = document.querySelector('.products-grid')
-
+const flashmsg = document.querySelector('.flashmsg')
+let interval
 productcard.addEventListener('click', function (e) {
     if (e.target.classList.contains('add')) {
         let productindex = e.target.dataset.index
@@ -261,7 +262,16 @@ productcard.addEventListener('click', function (e) {
             cart.push(Allproducts[productindex])
             localStorage.setItem('cartshop', JSON.stringify(cart))
             rendercart()
+            flashmsg.style.display = 'block';
+        }else{
+            flashmsg.innerHTML = 'you already in cart'
+            flashmsg.style.display = 'block';
         }
+        setInterval(interval)
+        interval = setTimeout(() => {
+            flashmsg.innerHTML = 'add to cart successfull'
+            flashmsg.style.display = 'none';
+        }, 3000);
     }
 })
 
