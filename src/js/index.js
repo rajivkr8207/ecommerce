@@ -192,8 +192,17 @@ search_product.addEventListener('focus', function () {
 
 // })
 
+function debounce(func, delay) {
+    let timer
+    return function (...args) {
+        clearInterval(timer)
+        timer = setTimeout(() => {
+            func(...args)
+        }, delay);
+    }
+}
 
-search_product.addEventListener('input', function () {
+search_product.addEventListener('input', debounce(function () {
     onebtn.forEach(function (elem) {
         elem.classList.remove('active')
     })
@@ -208,7 +217,9 @@ search_product.addEventListener('input', function () {
     } else {
         renderdata(Allproducts)
     }
-})
+    loadimg()
+}, 1000)
+)
 
 
 function Productfilter(query) {
@@ -219,7 +230,10 @@ function Productfilter(query) {
         }
     })
     renderdata(filterproduct)
+    loadimg()
 }
+
+
 
 
 
@@ -228,7 +242,7 @@ function renderdata(product) {
     product?.forEach(function (elem, index) {
         rencluster += `
     <div key='${index}' class="product-card">
-        <img src="${elem.img}" class="card-image">
+        <img data-src="${elem.img}"  class="card-image loadedimg">
         <div class="card-content">
           <span class="card-category">${elem.category}</span>
           <h3 class="card-title">${elem.name}</h3>
@@ -248,6 +262,7 @@ renderdata(Allproducts);
 
 
 
+
 const productcard = document.querySelector('.products-grid')
 const flashmsg = document.querySelector('.flashmsg')
 let interval
@@ -263,7 +278,7 @@ productcard.addEventListener('click', function (e) {
             localStorage.setItem('cartshop', JSON.stringify(cart))
             rendercart()
             flashmsg.style.display = 'block';
-        }else{
+        } else {
             flashmsg.innerHTML = 'you already in cart'
             flashmsg.style.display = 'block';
         }
@@ -306,11 +321,36 @@ var cart = JSON.parse(localStorage.getItem('cartshop')) || []
 
 
 function rendercart() {
-    if(cart.length>0){
-        cart_count.innerHTML =  cart.length
-    }else{
-        cart_count.innerHTML =  0
+    if (cart.length > 0) {
+        cart_count.innerHTML = cart.length
+    } else {
+        cart_count.innerHTML = 0
 
     }
 }
 rendercart()
+
+
+
+const overserver = new IntersectionObserver(function (entries, observers) {
+    entries.forEach(function (elem) {
+        if (elem.isIntersecting) {
+            const img = elem.target
+            img.src = img.dataset.src
+            img.classList.add('loadedimg')
+            observers.unobserve(img)
+        }
+    })
+
+}, {
+    root: null,
+    threshold: 0.2,
+})
+function loadimg() {
+    const allimg = document.querySelectorAll('.card-image')
+
+    allimg.forEach(function (elem) {
+        overserver.observe(elem)
+    })
+}
+loadimg()
